@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Order</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <div class="sidebar">
+            <h2>Dashboard</h2>
+            <a href="index.html" onclick="loadContent('index')">Homepage</a>
+            <a href="allOrders.html" onclick="loadContent('allOrders')">Get All Orders</a>
+            <a href="newOrderForm.html" onclick="loadContent('newOrderForm')">Create New Order</a>
+        </div>
+        <div class="content">
+            <!-- Your Create New Order Form Goes Here -->
+            <h1>Create New Order Form</h1>
+            <form id="newOrderForm">
+                <label for="productName">Product Name:</label>
+                <input type="text" id="productName" name="productName" required>
+
+                <label for="quantity">Quantity:</label>
+                <input type="text" id="quantity" name="quantity" required>
+
+                <label for="firmName">Firm Name:</label>
+                <input type="text" id="firmName" name="firmName" required>
+
+                <label for="customerName">Customer Name:</label>
+                <input type="text" id="customerName" name="customerName" required>
+
+                <label for="orderStatus">Order Status:</label>
+                <select id="orderStatus" name="orderStatus">
+                    <option value="Pending">Pending</option>
+                    <option value="In Production">In Production</option>
+                    <option value="Processed">Processed</option>
+                    <option value="Packed">Packed</option>
+                    <option value="Shipped">Shipped</option>
+                </select>
+
+                <label for="paymentStatus">Payment Status:</label>
+                <input type="text" id="paymentStatus" name="paymentStatus" required>
+
+                <button type="button" onclick="submitNewOrder()">Submit</button>
+            </form>
+            <script src="main.js"></script>
+        </div>
+    </div>
+</body>
+</html>

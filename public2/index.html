@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Order Management System</title>
+</head>
+
+<body class="flex h-screen bg-gray-100">
+
+    <aside class="bg-gray-800 text-white w-1/5 p-4">
+        <h1 class="text-2xl font-semibold mb-4 text-center">Dashboard</h1>
+        <div class="flex flex-col space-y-2">
+            <a href="index.html"
+                class="bg-gray-300 text-black rounded-md px-3 py-2 text-s font-medium mb-2 text-center focus:outline-none transition duration-300 ease-in-out transform hover:scale-105 hover:bg-gray-500 text-decoration-none">Home</a>
+            <a href="allOrders.html"
+                class="bg-gray-700 text-white rounded-md px-3 py-2 text-s font-medium mb-2 text-center hover:bg-gray-500 transition duration-300 focus:outline-none transform hover:scale-105 text-decoration-none">All Orders</a>
+            <a href="newOrderForm.html"
+                class="bg-gray-700 text-white rounded-md px-3 py-2 text-s font-medium mb-2 text-center hover:bg-gray-500 transition duration-300 focus:outline-none transform hover:scale-105 text-decoration-none">Create New Order</a>
+        </div>
+    </aside>
+
+    <main class="flex-1">
+
+        <nav class="navbar navbar-expand-lg bg-gray-800 h-20 justify-between items-center">
+            <div class="container-fluid">
+                <h1 class="text-3xl font-bold bg-gray-800 text-white text-center d-flex ml-auto">Order Management</h1>
+                <form class="d-flex ml-auto" role="search">
+                    <input id="city" class="form-control me-2" type="search" placeholder="Search"
+                        aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit" id="submit">Search</button>
+                </form>
+                <button id="loginButton"
+                    class="btn btn-primary ml-2">Login</button>
+            </div>
+        </nav>
+
+        <div class="divide-y divide-gray-100">
+            <div class="content p-4">
+                <h1 class="text-4xl mb-4">Welcome to the Order Management System</h1>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

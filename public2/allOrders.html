@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Orders</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <div class="sidebar">
+            <h2>Dashboard</h2>
+            <a href="index.html">Homepage</a>
+            <a href="allOrders.html">Get All Orders</a>
+            <a href="newOrderForm.html">Create New Order</a>
+        </div>
+        <div class="content">
+            <!-- Your Orders Table Goes Here -->
+            <h1>All Orders Table</h1>
+            <table id="ordersTable">
+                <!-- Table headers will be dynamically added by JavaScript -->
+            </table>
+            <script src="main.js"></script>
+            <script>
+                // Fetch and display orders when the page loads
+                window.onload = function() {
+                    getAllOrders();
+                };
+            </script>
+        </div>
+    </div>
+</body>
+</html>

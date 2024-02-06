@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="flex h-screen bg-gray-100">
+
+    <!-- Sidebar -->
+    <div class="bg-gray-800 text-white w-64 p-4">
+        <div class="text-2xl font-semibold mb-4">Dashboard</div>
+
+        <!-- Navigation Links -->
+        <ul>
+            <li class="mb-2">
+                <a href="#" class="flex items-center py-2 px-4 text-gray-400 hover:text-white">
+                    <span class="mr-2"><i class="fas fa-home"></i></span> Home
+                </a>
+            </li>
+            <li class="mb-2">
+                <a href="#" class="flex items-center py-2 px-4 text-gray-400 hover:text-white">
+                    <span class="mr-2"><i class="fas fa-chart-bar"></i></span> Analytics
+                </a>
+            </li>
+            <li class="mb-2">
+                <a href="#" class="flex items-center py-2 px-4 text-gray-400 hover:text-white">
+                    <span class="mr-2"><i class="fas fa-cog"></i></span> Settings
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Content -->
+    <div class="flex-1 p-10 relative">
+        <!-- Search Box and Button -->
+        <div class="absolute top-4 right-4 bg-white rounded-lg p-2 flex">
+            <input type="text" placeholder="Search..." class="w-40 p-2 focus:outline-none border-none">
+            <button class="bg-blue-500 text-white px-4 rounded">Search</button>
+        </div>
+
+        <h1 class="text-3xl font-semibold mb-4">Welcome to the Dashboard</h1>
+        <p>Your dashboard content goes here.</p>
+    </div>
+
+</body>
+</html>
