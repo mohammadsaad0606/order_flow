@@ -8,6 +8,15 @@ const getAllOrders = asyncWrapper(async (req, res) => {
   res.status(200).json({ orders })
 })
 
+// const getAllOrders = asyncWrapper(async (req, res) => {
+//   let query = {};
+//   if (req.query.status) {
+//     query.order_status = req.query.status;
+//   }
+//   const orders = await Order.find(query).sort({ priority: 'asc' });
+//   res.status(200).json({ orders });
+// });
+
 
 const createOrder = asyncWrapper(async (req, res) => {
   const order = await Order.create(req.body)
