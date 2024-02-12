@@ -37,6 +37,10 @@ const JobSchema = new mongoose.Schema({
     priority:{
         type: Number,
         default:1000
+    },
+    creation_date:{
+        type: Date, 
+        default: Date.now 
     }
 
 }, {timestamps:true})
