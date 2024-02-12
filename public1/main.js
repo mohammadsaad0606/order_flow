@@ -1,5 +1,10 @@
 
 
+// const orderDate = new Date(order.creation_date);
+// const currentDate = new Date();
+// const timeDifference = currentDate.getTime() - orderDate.getTime();
+// const daysDifference = Math.floor(timeDifference / (1000 * 3600 * 24));
+
 function getAllOrders() {
     fetch('/api/v1/orders')
         .then(response => response.json())
@@ -20,6 +25,7 @@ function getAllOrders() {
                     <th>Serial Number</th>
                     <th>Product Name</th>
                     <th>Quantity</th>
+                    <th>Days Elapsed</th>
                     <th>Firm Name</th>
                     <th>Customer Name</th>
                     <th>Order Status</th>
@@ -44,20 +50,89 @@ function getAllOrders() {
         });
 }
 
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const tabLinks = document.querySelectorAll('.tab-link');
+
+    tabLinks.forEach(link => {
+        link.addEventListener('click', function () {
+            const status = this.dataset.status;
+            fetchOrdersByStatus(status);
+        });
+    });
+
+
+});
+
+
+
+
+function fetchOrdersByStatus(status) {
+    fetch(`/api/v1/orders?status=${status}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(`Received ${status} orders:`, data);
+
+            if (!data || !data.orders) {
+                console.error(`Invalid data received for ${status} orders.`);
+                return;
+            }
+
+            const orders = data.orders;
+
+            // Create a table to display orders
+            const table = document.createElement('table');
+            table.innerHTML = `
+                <tr>
+                    <th>Serial Number</th>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Days Elapsed</th>
+                    <th>Firm Name</th>
+                    <th>Customer Name</th>
+                    <th>Order Status</th>
+                    <th>Payment Status</th>
+                    <th>Actions</th>
+                </tr>
+            `;
+
+            // Add rows to the table
+            orders.forEach((order, index) => {
+                addTableRow(table, order, index + 1);
+            });
+
+            // Update content area with the table
+            const content = document.querySelector('.content');
+            content.innerHTML = '';
+            content.appendChild(table);
+        })
+        .catch(error => {
+            console.error(`Error fetching ${status} orders:`, error);
+            // You can display an error message to the user or handle the error as needed
+        });
+}
+
 // Function to add a row to the table
 function addTableRow(table, order, serialNumber) {
+    const orderDate = new Date(order.createdAt);
+    const currentDate = new Date();
+    const timeDifference = currentDate.getTime() - orderDate.getTime();
+    const daysDifference = Math.floor(timeDifference / (1000 * 3600 * 24));
+    
     const row = table.insertRow();
     row.innerHTML = `
         <td>${serialNumber}</td>
         <td>${order.product_name}</td>
         <td>${order.quantity}</td>
+        <td>${daysDifference}</td>
         <td>${order.firm_name}</td>
         <td>${order.customer_name}</td>
         <td>${order.order_status}</td>
         <td>${order.payment_status}</td>
         <td>
-            <button onclick="editOrder('${order._id}')">Edit</button>
-            <button onclick="deleteOrder('${order._id}')">Delete</button>
+            <button id="edit" onclick="editOrder('${order._id}')">Edit</button>
+            <button id="delete" onclick="deleteOrder('${order._id}')">Delete</button>
         </td>
     `;
 }
@@ -127,7 +202,7 @@ function submitNewOrder() {
         .then(response => response.json())
         .then(data => {
             console.log('New order created:', data.order);
-            getAllOrders();
+            goToAllOrders();
             // Optionally, you can display a success message or redirect to the orders page
         })
         .catch(error => console.error('Error creating new order:', error));
@@ -238,7 +313,8 @@ function submitUpdatedOrder(orderId) {
         .then(data => {
             console.log('Order updated:', data.order);
             // Optionally, you can display a success message or redirect to the orders page
-            getAllOrders(); // Refresh the orders table after updating
+            goToAllOrders(); // Refresh the orders table after updating
+
         })
         .catch(error => console.error('Error updating order:', error));
 }
@@ -252,7 +328,8 @@ function deleteOrder(orderId) {
         .then(data => {
             console.log('Order deleted:', data.order);
             // Optionally, you can update the UI to remove the deleted order
-            getAllOrders(); // Refresh the orders table after deletion
+            goToAllOrders(); // Refresh the orders table after deletion
+
         })
         .catch(error => console.error('Error deleting order:', error));
 }
@@ -274,16 +351,4 @@ function goToAllOrders() {
 function goToNewOrderForm() {
     window.location.href = 'newOrderForm.html';
 }
- 
-// function loadContent(page) {
-//     const contentDiv = document.querySelector('.content');
-//     contentDiv.innerHTML = ''; // Clear existing content
 
-//     if (page === 'index') {
-//         contentDiv.innerHTML = '<p id="welcomeMessage">Welcome to the Order Management System!</p>';
-//     } else if (page === 'allOrders') {
-//         getAllOrders(); // Fetch and display orders
-//     } else if (page === 'newOrderForm') {
-//         openNewOrderForm(); // Display the new order form
-//     }
-// }

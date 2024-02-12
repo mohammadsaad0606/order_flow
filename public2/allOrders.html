@@ -1,33 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Orders</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    
 </head>
-<body>
-    <div class="dashboard">
-        <div class="sidebar">
-            <h2>Dashboard</h2>
-            <a href="index.html">Homepage</a>
-            <a href="allOrders.html">Get All Orders</a>
-            <a href="newOrderForm.html">Create New Order</a>
-        </div>
+
+
+<body class="flex min-h-screen  overflow-y-auto bg-gray-100">
+
+    <!-- <div class="dashboard"> -->
+    <div class="bg-gray-800 text-white w-96 p-8">
+        <div class="text-2xl font-semibold mb-12">Dashboard</div>
+        
+
+        <!-- <div class=" top-4 right-4 bg-white rounded-lg p-2 flex mb-12">
+            <input type="text" placeholder="Search..." class="w-40 p-2 focus:outline-none border-none">
+            <button class="bg-blue-500 text-white px-4 rounded">Search</button>
+        </div> -->
+        <!-- <div class="flex flex-col space-y-4"> -->
+        <ul>
+            <li class="mb-6">
+
+                <a href="index.html" class="bg-gray-800 text-white rounded-xl px-6 py-2 text-s font-bold 
+                        focus:outline-none transition duration-300 ease-in-out transform hover:scale-105 
+                        hover:bg-gray-500 text-decoration-none flex items-center hover:text-white">
+                    <span class="mr-2"><i class="fas fa-home"></i></span>Home</a>
+            </li>
+
+            <li class="mb-6">
+                <a href="allOrders.html" class="bg-gray-300 text-black rounded-xl px-6 py-2 text-s font-bold 
+                         hover:bg-gray-500 transition duration-300 focus:outline-none transform hover:scale-105 
+                         text-decoration-none flex items-center hover:text-white">
+                    <span class="mr-2"><i class="fas fa-list"></i></span>All Orders</a>
+            </li>
+
+            <li class="mb-6">
+                <a href="newOrderForm.html" class="bg-gray-800 text-white rounded-xl px-6 py-2 text-s font-bold  
+                         hover:bg-gray-500 transition duration-300 focus:outline-none transform hover:scale-105
+                         text-decoration-none flex items-center">
+                    <span class="mr-2"><i class="fas fa-plus"></i></span>Create New Order</a>
+            </li>
+
+
+        </ul>
+      
+    </div>
+
+
+
+
+    <div class="flex flex-col mb-2 p-8  ">
+        
+        
+        <ul class="hidden text-sm font-medium text-center text-gray-500 rounded-lg shadow sm:flex dark:divide-gray-700 dark:text-gray-400 space-x-1">
+            <li class="w-full">
+                <a href="#" class="inline-block w-full p-4 text-gray-900 bg-gray-100 border-r border-gray-200 dark:border-gray-700 rounded-lg
+                rounded-l-lg focus:ring-4 focus:ring-blue-300 active focus:outline-none dark:bg-gray-700 dark:text-white" 
+                aria-current="page" onclick="getAllOrders()">All Orders</a>
+            </li>
+            <li class="w-full">
+                <a href="#" class="tab-link inline-block w-full p-4 bg-white border-r border-gray-200 dark:border-gray-700 rounded-lg hover:text-gray-700 
+                hover:bg-gray-50 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+                data-status="Pending">Orders Pending</a>
+            </li>
+            <li class="w-full">
+                <a href="#" class="tab-link inline-block w-full p-4 bg-white border-r border-gray-200 dark:border-gray-700 rounded-lg hover:text-gray-700 
+                hover:bg-gray-50 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+                data-status="In Production">Orders In Production</a>
+            </li>
+            <li class="w-full">
+                <a href="#" class="tab-link inline-block w-full p-4 bg-white border-r border-gray-200 dark:border-gray-700 rounded-lg hover:text-gray-700 
+                hover:bg-gray-50 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+                data-status="Processed">Orders Processed</a>
+            </li>
+            <li class="w-full">
+                <a href="#" class="tab-link inline-block w-full p-4 bg-white border-r border-gray-200 dark:border-gray-700 rounded-lg hover:text-gray-700 
+                hover:bg-gray-50 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+                data-status="Packed">Orders Packed</a>
+            </li>
+            <li class="w-full">
+                <a href="#" class="tab-link inline-block w-full p-4 bg-white border-s-0 border-gray-200 dark:border-gray-700 rounded-lg hover:text-gray-700 
+                hover:bg-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+                data-status="Shipped">Orders Shipped</a>
+            </li>
+        </ul>
+
+        <div class=" md:w-1/3 px-0 py-0 mt-8 ">
+            <form class="flex items-center">
+              <label for="simple-search" class="sr-only">Search</label>
+              <div class="relative w-full">
+                <div class="absolute top-2 left-0 flex items-center pl-3 pointer-events-none">
+                  <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <input type="text" id="simple-search" class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search" required="">
+              </div>
+            </form>
+          </div>
+
+
+          <div class="left-0">
         <div class="content">
             <!-- Your Orders Table Goes Here -->
-            <h1>All Orders Table</h1>
-            <table id="ordersTable">
+
+            <table  id="employeeTable">
                 <!-- Table headers will be dynamically added by JavaScript -->
             </table>
             <script src="main.js"></script>
             <script>
                 // Fetch and display orders when the page loads
-                window.onload = function() {
+                window.onload = function () {
                     getAllOrders();
                 };
             </script>
         </div>
     </div>
+    </div>
+    <!-- </div> -->
+
+    
 </body>
+
 </html>
