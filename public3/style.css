@@ -1,7 +1,7 @@
 
 
 
-
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 body {
     font-family: 'Arial', sans-serif;
@@ -39,12 +39,12 @@ body {
 }
 
 .content {
-    padding: 20px;
+    /* padding: 20px; */
     flex: 1;
 }
 
 h1, h2 {
-    color: #333;
+    color: #000000;
 }
 
 /* Homepage specific styles */
@@ -55,7 +55,7 @@ h1, h2 {
 /* Table styles */
 table {
     border-collapse: collapse;
-    width: 100%;
+    /* width: 100%; */
 }
 
 th, td {
@@ -72,6 +72,7 @@ th {
 form {
     max-width: 400px;
     margin: 0 auto;
+    color: #000;
 }
 
 label {
@@ -81,11 +82,12 @@ label {
 
 input, select, button {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-}
+    padding: 8px;
+    margin-bottom: 2px;
+   
+} 
 
-button {
+/* button {
     background-color: #333;
     color: #fff;
     border: none;
@@ -99,11 +101,11 @@ button:hover {
     background-color: #555;
 }
 
-#edit {
+/* #edit {
     background-color: #285ee9;
     border-radius: 10px;
     width: 70px;
-    margin-left: 10px;
+    margin-left: 2px;
 }
 
 #edit:hover {
@@ -118,9 +120,12 @@ button:hover {
 
 #delete:hover {
     background-color: #d17070;
-}
+} */
 
-#update {
+
+
+
+/* #update {
     background-color: #1f1c1c;
 }
 
@@ -135,4 +140,87 @@ button:hover {
 
 #submit:hover {
     background-color: #78ca7c;
-}
+} */
+
+
+
+#employeeTable {
+    width:auto;
+    /* display: none; */
+    border-collapse: collapse;
+    /* border:5px solid black; */
+    /* background-color: #cbdced; */
+  }
+  
+  th, td {
+    border:1px solid #373737;
+    padding: 8px;
+    color: #000;
+    
+  }
+
+   tr:nth-child(even){
+    background-color: #f2f2f2;
+
+  }
+   tr:nth-child(odd){
+    background-color: #ffffff;
+
+  }
+   tr:hover{
+    background-color: #ddd;
+
+  }
+   th {
+    /* margin-top: 5px; */
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+  }
+
+  .table-container th {
+    background-color: #1d0303;
+    color: rgb(255, 255, 255);
+    
+  }
+
+  .table-container td {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    
+    
+  }
+
+  /* input[type="file"] {
+    outline: none;
+    cursor:pointer;
+    font-size: 17px;
+  }
+  
+  #range-label {
+    width:15%;
+    padding:5px;
+    background-color: #1BBA93;
+    color:white;
+    border-radius: 5px;
+    font-size: 17px;
+    position: relative;
+    top:-8px;
+  } */
+
+  p {
+    color: #000;
+  }
+
+  /* a {
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor:pointer;
+    border-radius: 8px;
+    margin-left: 8px;
+
+  } */

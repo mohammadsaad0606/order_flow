@@ -24,9 +24,11 @@ const JobSchema = new mongoose.Schema({
         required: [true, 'Pleasae provide customer name'],
         maxlength: 50
     },
+    
+
     order_status: {
         type: String,
-        enum: ['Pending', 'In Production', 'Processed', 'Packed', 'Shipped'],
+        enum: ['Trading','Pending', 'In Production', 'Testing', 'Packed', 'Shipped'],
         default: 'Pending'
     },
     payment_status: {
@@ -36,7 +38,7 @@ const JobSchema = new mongoose.Schema({
     },
     priority:{
         type: Number,
-        default:1000
+        required: [true, 'Please provide priority'],
     },
     creation_date:{
         type: Date, 
